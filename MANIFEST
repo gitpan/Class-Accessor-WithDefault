@@ -1,0 +1,8 @@
+Changes
+Makefile.PL
+MANIFEST
+README
+t/accessor.t
+t/best_practice.t
+lib/Class/Accessor/WithDefault.pm
+META.yml                                 Module meta-data (added by MakeMaker)

@@ -1,33 +1,35 @@
 package Class::Accessor::WithDefault;
 use base qw/Class::Accessor/;
-use 5.010000;
+use 5.006;
 
-our $VERSION = '0.17';
+our $VERSION = '0.19';
 
 sub mk_accessors {
-	my $self = shift;
-	my @fields;
-	foreach(@_){
-		if(ref $_ eq 'HASH'){
-			$self->mk_default(%{$_});
-		}else{
-			push @fields,$_;
-		}
-	}
-	$self->SUPER::mk_accessors(@fields);
+    my $self = shift;
+    my @fields;
+    foreach (@_) {
+        if ( ref $_ eq 'HASH' ) {
+            $self->mk_default( %{$_} );
+        }
+        else {
+            push @fields, $_;
+        }
+    }
+    $self->SUPER::mk_accessors(@fields);
 }
 
 sub mk_ro_accessors {
-	my $self = shift;
-	my @fields;
-	foreach(@_){
-		if(ref $_ eq 'HASH'){
-			$self->mk_ro_default(%{$_});
-		}else{
-			push @fields,$_;
-		}
-	}
-	$self->SUPER::mk_ro_accessors(@fields);
+    my $self = shift;
+    my @fields;
+    foreach (@_) {
+        if ( ref $_ eq 'HASH' ) {
+            $self->mk_ro_default( %{$_} );
+        }
+        else {
+            push @fields, $_;
+        }
+    }
+    $self->SUPER::mk_ro_accessors(@fields);
 }
 
 sub mk_default {
@@ -66,11 +68,9 @@ sub _make_default {
             }
             my $fullname = "${class}::$accessor_name";
             my $subnamed = 0;
-            unless ( defined &{$fullname} ) {
-                subname( $fullname, $accessor ) if defined &subname;
-                $subnamed = 1;
-                *{$fullname} = $accessor;
-            }
+            subname( $fullname, $accessor ) if defined &subname;
+            $subnamed = 1;
+            *{$fullname} = $accessor;
         }
         else {
             my $fullaccname = "${class}::$accessor_name";
@@ -126,8 +126,6 @@ sub make_ro_default {
       }
 }
 
-
-
 1;
 __END__
 # Below is stub documentation for your module. You'd better edit it!
@@ -139,7 +137,11 @@ Class::Accessor::WithDefault - Set Default Value Implement on Class::Accessor
 =head1 SYNOPSIS
 
 	use Class::Accessor::WithDefault;
-	__PACKAGE__->mk_accessors(qw/foo bar/,{a => 'default value'});
+	__PACKAGE__->mk_accessors(qw/a b/,{c => 'default value'});
+
+	....
+	#..->new();
+	print $object->c;  #default value
 
 =head1 DESCRIPTION
 	
@@ -147,17 +149,16 @@ Class::Accessor is great, except for some inconvenience in setting the default v
 
 This module allows you to set the default value for all the generated accessors by passing a hashref to the method.
 	
+
 B<NOTE:> Don't use 
 
-	__PACKAGE__->mk_accessors(qw/foo bar/,{foo=>'default'});
+	$object->get("c");
 
-It won't set "defalt" to foo
-
-B<NOTE:> Don't use get to get the default value, it won't work
+to get  the default value, this won't work.
 
 =head1 SEE ALSO
 	
-	Class::Accessor
+Class::Accessor
 	
 =head1 AUTHOR
 

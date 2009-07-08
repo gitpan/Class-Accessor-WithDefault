@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Class-Accessor-WithDefault
-version:            0.17
+version:            0.19
 abstract:           Set Default Value Implement on Class::Accessor
 author:
     - Woosley.Xu

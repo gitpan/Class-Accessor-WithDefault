@@ -1,22 +1,22 @@
 --- #YAML:1.0
 name:               Class-Accessor-WithDefault
-version:            0.19
+version:            0.23
 abstract:           Set Default Value Implement on Class::Accessor
 author:
     - Woosley.Xu
-license:            unknown
+license:            Perl
 distribution_type:  module
 configure_requires:
     ExtUtils::MakeMaker:  0
 build_requires:
     ExtUtils::MakeMaker:  0
 requires:
-    Class::Accessor:  0
+    Class::Accessor:  0.33
 no_index:
     directory:
         - t
         - inc
-generated_by:       ExtUtils::MakeMaker version 6.50
+generated_by:       ExtUtils::MakeMaker version 6.54
 meta-spec:
     url:      http://module-build.sourceforge.net/META-spec-v1.4.html
     version:  1.4

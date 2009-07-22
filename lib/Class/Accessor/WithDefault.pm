@@ -2,7 +2,7 @@ package Class::Accessor::WithDefault;
 use base qw/Class::Accessor/;
 use 5.006;
 
-our $VERSION = '0.19';
+our $VERSION = '0.23';
 
 sub mk_accessors {
     my $self = shift;
@@ -97,7 +97,7 @@ sub make_default {
         if (@_) {
             return $self->set( $field, @_ );
         }
-        elsif ( !$self->get($field) ) {
+        elsif ( ! defined $self->get($field) ) {
             return $self->set( $field, $value );
         }
         else {
@@ -117,7 +117,7 @@ sub make_ro_default {
 "'$caller' cannot alter the value of '$field' on objects of class '$class'"
             );
         }
-        elsif ( !$self->get($field) ) {
+        elsif ( ! defined $self->get($field) ) {
             return $self->set( $field, $value );
         }
         else {
@@ -154,7 +154,7 @@ B<NOTE:> Don't use
 
 	$object->get("c");
 
-to get  the default value, this won't work.
+to get the default value, this won't work.
 
 =head1 SEE ALSO
 	

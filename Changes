@@ -9,3 +9,6 @@ Revision history for Perl extension Class::Accessor::WithDefault.
 
 0.19  Wen Jul  7 11:47:45 2009
 	- bug fix
+
+0.23  Wen Jul  21 7:44:40 2009
+	- bug fix
